@@ -4,7 +4,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   user-select: none;
-  height: 2004px 
+  /* height: 2004px  */
   /* background-color: #333; */
 }
 .start {
@@ -278,7 +278,7 @@ hr {
 } 
 
 .lose {
-  background-color: #F17;
+  background-color: lightcoral;
   color: #fff;
   font-size: 30px;
   display: flex;
@@ -291,8 +291,22 @@ hr {
   font-weight: bold;
   text-transform: capitalize;
 }
+.containerLose{
+display: flex;
+flex-direction: column;
+}
+.containerLose button {
+  margin-top: 40px;
+    padding: 15px 10px;
+    border: none;
+    background: orange;
+    color: ghostwhite;
+    font-size: 17px;
+    cursor: pointer;
+}
+
 .win {
-  background-color: rgba(0, 255, 0, 0.915);
+  background-color: lightseagreen;
   color: #fff;
   font-size: 30px;
   display: flex;
@@ -304,4 +318,40 @@ hr {
   bottom: -30px;
   font-weight: bold;
   text-transform: capitalize;
+}
+.containerWin{
+  display: flex;
+flex-direction: column;
+}
+.containerWin button {
+  margin-top: 40px;
+    padding: 15px 10px;
+    border: none;
+    background: orange;
+    color: ghostwhite;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* Medium devices (Tablet, 750px and down) */
+@media only screen and (max-width: 800px) {
+  .container{
+    width: 750px;
+    padding: 0 10px;
+  }
+}
+
+/* small devices (phones, 500px and down) */
+@media only screen and (max-width: 500px) {
+  .container{
+    width: 370px;
+    padding: 0 10px;
+  }
+  .row {
+  flex-direction: column;
+  display: block;
+}
+.win,.lose {
+  text-align: center;
+}
 }

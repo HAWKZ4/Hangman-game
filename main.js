@@ -3,13 +3,12 @@ const letters = "abcdefghijklmnopqrstuvwxyz";
 
 let x = 0;
 
+document.querySelector(".start button").onclick = () => {
+  document.querySelector(".start").remove();
+  document.getElementById("start").play();
+};
 
-document.querySelector(".start button").onclick = ( ) => {
-  document.querySelector(".start").remove()
-  document.getElementById("start").play()
-}
-
-let gameContainer = document.querySelector(".container")
+let gameContainer = document.querySelector(".container");
 
 // Array of letters
 let lettersArray = Array.from(letters);
@@ -38,24 +37,8 @@ lettersArray.forEach((letter) => {
 
 // Object of words + categories
 let words = {
-  programming: [
-    "python",
-    "php",
-    "mysql",
-    "html",
-    "css",
-    "java script",
-    "java",
-    "kotlin",
-  ],
-  character: [
-    "Albert Einstein",
-    "Archimedes",
-    "Marie Curie",
-    "Alexander",
-    "Louis",
-    "Alfred Nobel",
-  ],
+  programming: ["python", "php", "mysql", "html", "css", "java script", "java", "kotlin"],
+  character: ["Albert Einstein", "Archimedes", "Marie Curie", "Alexander", "Louis", "Alfred Nobel"],
   countries: ["Germany", "UK", "USA", "Italy", "Russia"],
   films: ["Paratise", "Black Hawk Down", "Terrifier"],
 };
@@ -112,8 +95,6 @@ let theDraw = document.querySelector(".hangman-draw");
 
 // Add event click on spans (letter box)
 addEventListener("click", (e) => {
-
-
   // Check if element is a span with class letter-box
   if (e.target.className === "letter-box") {
     // Set the status default value
@@ -155,33 +136,51 @@ addEventListener("click", (e) => {
 
         // Create Div
         let div = document.createElement("div");
-        div.appendChild(
-          document.createTextNode(
-            `Game Over Your Tries Are ${wrongAttempts} Sorry `
-          )
+        let container = document.createElement("div");
+        container.className = "containerLose";
+        let textNodeLose = document.createTextNode(
+          `Game Over Your Tries Are ${wrongAttempts} Sorry `
         );
+        let button = document.createElement("button");
+        button.textContent = "Retry The Game";
+        button.onclick = () => {
+          window.location.reload();
+        };
+        container.appendChild(textNodeLose);
+        container.appendChild(button);
+        div.appendChild(container);
         div.className = "lose";
         document.body.appendChild(div);
-
-      }}
-      else if(theStatus == true) {
-        if(guessSpans.length == x) {
-          // Create div
-          let div=document.createElement("div");
-          div.appendChild(document.createTextNode(`Nice You Win Your Wrongs Are ${wrongAttempts} GOOD JOB`))
-          div.className = "win";
-          document.body.appendChild(div);
-          console.log("div")
-          theStatus=false;
-          gameContainer.style.pointerEvent="none"
-        }
-        localStorage.setItem("Score" , wrongAttempts)
-        let a = [];
-        a.push(localStorage.getItem("Score"));
-        console.log(a)
-        
       }
+    } else if (theStatus == true) {
+      if (guessSpans.length == x) {
+        // Create div
+        let div = document.createElement("div");
+        let container = document.createElement("div");
+        container.className = "containerWin";
+        let textNode = document.createTextNode(
+          `Nice You Win Your Wrongs Tries Are ${wrongAttempts} GOOD JOB`
+        );
+        let button = document.createElement("button");
+        button.textContent = "Retry The Game";
+        button.onclick = () => {
+          window.location.reload();
+        };
+
+        container.appendChild(textNode);
+        container.appendChild(button);
+
+        div.appendChild(container);
+        div.className = "win";
+        document.body.appendChild(div);
+        // console.log("div")
+        theStatus = false;
+        gameContainer.style.pointerEvent = "none";
+      }
+      localStorage.setItem("Score", wrongAttempts);
+      let a = [];
+      a.push(localStorage.getItem("Score"));
+      // console.log(a)
+    }
   }
 });
-
-

@@ -110,7 +110,7 @@ addEventListener("click", (e) => {
 
     // Loop on to check if there's a match between the lettersAndSpace and the clicked value
     theChosenWord.forEach((wordLetter, wordIndex) => {
-      // Check if the cliced letter equal to word letter
+      // Check if the clicekd letter equal to word letter
       if (theClickedLetter === wordLetter) {
         theStatus = true;
 
@@ -134,7 +134,7 @@ addEventListener("click", (e) => {
       if (wrongAttempts === 8) {
         lettersContainer.classList.add("disabled");
 
-        // Create Div
+        // Create div
         let div = document.createElement("div");
         let container = document.createElement("div");
         container.className = "containerLose";
@@ -173,14 +173,12 @@ addEventListener("click", (e) => {
         div.appendChild(container);
         div.className = "win";
         document.body.appendChild(div);
-        // console.log("div")
         theStatus = false;
         gameContainer.style.pointerEvent = "none";
       }
       localStorage.setItem("Score", wrongAttempts);
       let a = [];
       a.push(localStorage.getItem("Score"));
-      // console.log(a)
     }
   }
 });

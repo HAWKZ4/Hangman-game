@@ -57,7 +57,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ----------
 
 ### Example Screenshot
-		
+
+![hawkz4 github io_Hangman-game_](https://github.com/HAWKZ4/Hangman-game/assets/108879264/c9759679-4051-4396-a438-9f9687da1c02)
 
 ### Built With
 

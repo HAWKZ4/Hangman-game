@@ -8,7 +8,7 @@ document.querySelector(".start button").onclick = () => {
   document.getElementById("start").play();
 };
 
-let gameContainer = document.querySelector(".container");
+let gameContainer = document.querySelector(".parent .container");
 
 // Array of letters
 let lettersArray = Array.from(letters);
@@ -139,7 +139,7 @@ addEventListener("click", (e) => {
         let container = document.createElement("div");
         container.className = "containerLose";
         let textNodeLose = document.createTextNode(
-          `Game Over Your Tries Are ${wrongAttempts} Sorry `
+          "Sorry 😥 You Have Reached The Limit Of Incorrect Tries."
         );
         let button = document.createElement("button");
         button.textContent = "Retry The Game";
@@ -150,7 +150,7 @@ addEventListener("click", (e) => {
         container.appendChild(button);
         div.appendChild(container);
         div.className = "lose";
-        document.body.appendChild(div);
+        gameContainer.appendChild(div);
       }
     } else if (theStatus == true) {
       if (guessSpans.length == x) {
@@ -159,7 +159,7 @@ addEventListener("click", (e) => {
         let container = document.createElement("div");
         container.className = "containerWin";
         let textNode = document.createTextNode(
-          `Nice You Win Your Wrongs Tries Are ${wrongAttempts} GOOD JOB`
+          `Nice 🙃 You Won Your Wrong Tries Are Just ${wrongAttempts}`
         );
         let button = document.createElement("button");
         button.textContent = "Retry The Game";
@@ -172,7 +172,7 @@ addEventListener("click", (e) => {
 
         div.appendChild(container);
         div.className = "win";
-        document.body.appendChild(div);
+        gameContainer.appendChild(div);
         theStatus = false;
         gameContainer.style.pointerEvent = "none";
       }
